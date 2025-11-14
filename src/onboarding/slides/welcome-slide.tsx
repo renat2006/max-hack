@@ -36,13 +36,13 @@ export function WelcomeSlide({ isActive, direction }: OnboardingSlideProps) {
               className="mb-2 text-3xl font-bold sm:text-4xl"
               style={{ color: colors.textPrimary }}
             >
-              Welcome to Satellite
+              Добро пожаловать в Спутник
             </h1>
             <p
               className="text-base leading-relaxed sm:text-lg"
               style={{ color: colors.textSecondary }}
             >
-              Your orbital mission control center
+              Ваш центр управления орбитальными миссиями
             </p>
           </div>
 
@@ -54,9 +54,9 @@ export function WelcomeSlide({ isActive, direction }: OnboardingSlideProps) {
             }}
           >
             {[
-              "Build & upgrade your solar station",
-              "Complete quick space missions",
-              "Compete on the global leaderboard",
+              "Стройте и улучшайте солнечную станцию",
+              "Выполняйте быстрые космические миссии",
+              "Соревнуйтесь в глобальной таблице лидеров",
             ].map((text) => (
               <div key={text} className="flex items-start gap-3">
                 <CheckCircle

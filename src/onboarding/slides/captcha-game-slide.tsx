@@ -25,7 +25,7 @@ export function CaptchaGameSlide({ isActive, direction }: OnboardingSlideProps) 
             }}
           >
             <Crosshair size={16} weight="bold" className="mr-1 inline" />
-            Select all: SATELLITES
+            Выберите все: СПУТНИКИ
           </div>
 
           <div className="grid grid-cols-3 gap-2">
@@ -75,14 +75,13 @@ export function CaptchaGameSlide({ isActive, direction }: OnboardingSlideProps) 
         {/* Content */}
         <div className="space-y-3 text-center">
           <h2 className="text-2xl font-bold sm:text-3xl" style={{ color: colors.textPrimary }}>
-            Tap to find satellites
+            Нажмите, чтобы найти спутники
           </h2>
           <p
             className="mx-auto max-w-md text-base leading-relaxed"
             style={{ color: colors.textSecondary }}
           >
-            Read the prompt, select matching tiles, then hit Verify. Perfect accuracy gives bonus
-            points!
+            Прочитайте задание, выберите подходящие плитки, затем нажмите Подтвердить. Идеальная точность даёт бонусные очки!
           </p>
         </div>
       </div>

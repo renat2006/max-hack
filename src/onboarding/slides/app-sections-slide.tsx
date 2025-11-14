@@ -18,11 +18,11 @@ export function AppSectionsSlide({ isActive, direction }: OnboardingSlideProps) 
   const colors = useThemeColors();
 
   const tabs = [
-    { icon: House, label: "Home", active: true },
-    { icon: Planet, label: "Farm", active: false },
-    { icon: GameController, label: "Games", active: false },
-    { icon: Trophy, label: "Top", active: false },
-    { icon: User, label: "Profile", active: false },
+    { icon: House, label: "Главная", active: true },
+    { icon: Planet, label: "Ферма", active: false },
+    { icon: GameController, label: "Игры", active: false },
+    { icon: Trophy, label: "Топ", active: false },
+    { icon: User, label: "Профиль", active: false },
   ];
 
   return (
@@ -48,7 +48,7 @@ export function AppSectionsSlide({ isActive, direction }: OnboardingSlideProps) 
               <div className="flex items-center gap-2">
                 <RocketLaunch size={20} weight="fill" style={{ color: colors.accent }} />
                 <span className="text-sm font-semibold" style={{ color: colors.textPrimary }}>
-                  Satellite Mission Control
+                  Центр управления Спутником
                 </span>
               </div>
             </div>
@@ -98,7 +98,7 @@ export function AppSectionsSlide({ isActive, direction }: OnboardingSlideProps) 
             >
               <div className="mb-1 text-xl">🏠</div>
               <div className="text-xs font-medium" style={{ color: colors.textSecondary }}>
-                Dashboard
+                Панель управления
               </div>
             </div>
             <div
@@ -110,7 +110,7 @@ export function AppSectionsSlide({ isActive, direction }: OnboardingSlideProps) 
             >
               <div className="mb-1 text-xl">⚡</div>
               <div className="text-xs font-medium" style={{ color: colors.textSecondary }}>
-                Quick Stats
+                Быстрая статистика
               </div>
             </div>
             <div
@@ -122,7 +122,7 @@ export function AppSectionsSlide({ isActive, direction }: OnboardingSlideProps) 
             >
               <div className="mb-1 text-xl">🎯</div>
               <div className="text-xs font-medium" style={{ color: colors.textSecondary }}>
-                All Tabs
+                Все разделы
               </div>
             </div>
           </div>
@@ -131,13 +131,13 @@ export function AppSectionsSlide({ isActive, direction }: OnboardingSlideProps) 
         {/* Content */}
         <div className="space-y-3 text-center">
           <h2 className="text-2xl font-bold sm:text-3xl" style={{ color: colors.textPrimary }}>
-            Everything in reach
+            Всё под рукой
           </h2>
           <p
             className="mx-auto max-w-md text-base leading-relaxed"
             style={{ color: colors.textSecondary }}
           >
-            Navigate between sections with the bottom bar. All features are just one tap away.
+            Переключайтесь между разделами с помощью нижней панели. Все функции доступны одним нажатием.
           </p>
         </div>
       </div>

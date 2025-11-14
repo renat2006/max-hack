@@ -2,7 +2,7 @@
  * Utility functions for managing onboarding state
  */
 
-const ONBOARDING_STORAGE_KEY = "satellite-onboarding-completed";
+const ONBOARDING_STORAGE_KEY = "sputnik-onboarding-completed";
 
 /**
  * Check if user has completed onboarding

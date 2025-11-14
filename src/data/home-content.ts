@@ -46,7 +46,7 @@ export const HOME_TRENDING_GAMES: MiniGameSummary[] = [
   {
     id: "astro-scan",
     title: "Astro Scan",
-    synopsis: "Tag the rogue satellites before they breach orbit.",
+    synopsis: "Отмечайте опасные спутники до того, как они нарушат орбиту.",
     difficulty: "Standard",
     averageDuration: "02:30",
     playerCount: 18432,

@@ -9,7 +9,7 @@ const buildCaptchaDefinition = (): MiniGameDefinition => {
   return {
     id: "orbital-captcha",
     title: "Orbital Captcha",
-    synopsis: "Validate satellite telemetry by tagging the correct frames in an orbital feed.",
+    synopsis: "Проверяйте телеметрию спутников, отмечая правильные кадры в орбитальной трансляции.",
     difficulty: "standard",
     tags: ["pattern", "focus", "solo"],
     cover: {

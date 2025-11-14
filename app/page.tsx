@@ -109,7 +109,7 @@ export default function Home(): React.ReactElement {
             </Card>
           )}
         </div>
-      </main>
+    </main>
       <Navigation />
     </>
   );
