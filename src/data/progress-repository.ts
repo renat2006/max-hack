@@ -59,7 +59,10 @@ const ensureSchema = async (sql: SqlClient): Promise<void> => {
 };
 
 const mapStatusToEventType = (status: string): EventType => {
-  return status === EventType.Success ? EventType.Success : EventType.Attempt;
+  if (status === "success") {
+    return EventType.Success;
+  }
+  return EventType.Attempt;
 };
 
 export const saveProgressEvent = async (input: ProgressEventInput): Promise<void> => {

@@ -11,7 +11,7 @@ interface IconCircleProps {
   variant?: IconCircleVariant;
 }
 
-export function IconCircle({ children, size = "md", variant = "outlined" }: IconCircleProps) {
+export function IconCircle({ children, size = "md", variant = "outlined" }: IconCircleProps): React.ReactElement {
   const colors = useThemeColors();
 
   const sizeClass: Record<IconCircleSize, string> = {

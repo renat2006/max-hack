@@ -8,7 +8,7 @@ interface StatusBadgeProps {
   background: string;
 }
 
-export function StatusBadge({ icon, color, background }: StatusBadgeProps) {
+export function StatusBadge({ icon, color, background }: StatusBadgeProps): React.ReactElement {
   return (
     <div
       className="relative flex h-11 w-11 flex-none items-center justify-center overflow-hidden rounded-full"
@@ -39,7 +39,7 @@ interface NotificationProps {
   description: string;
 }
 
-export function Notification({ status, icon, title, description }: NotificationProps) {
+export function Notification({ status, icon, title, description }: NotificationProps): React.ReactElement {
   const colors = useThemeColors();
 
   const tone = status === "success" ? colors.success : colors.danger;

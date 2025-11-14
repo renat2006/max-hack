@@ -143,7 +143,7 @@ export function useSpritePreload({
         // Загружаем остальные в фоне
         if (!controller.signal.aborted && remainingUrls.length > 0) {
           // Запускаем фоновую загрузку без блокировки
-          (async () => {
+          void (async () => {
             for (let i = 0; i < remainingUrls.length; i += batchSize) {
               if (controller.signal.aborted) return;
               

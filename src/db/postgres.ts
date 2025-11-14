@@ -3,6 +3,7 @@ import postgres from "postgres";
 const MAX_CONNECTIONS = 5;
 
 declare global {
+  // eslint-disable-next-line no-var
   var __SATELLITE_SQL__: ReturnType<typeof postgres> | undefined;
 }
 

@@ -9,7 +9,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
   variant?: CardVariant;
 }
 
-export function Card({ children, variant = "default", className = "", ...props }: CardProps) {
+export function Card({ children, variant = "default", className = "", ...props }: CardProps): React.ReactElement {
   const colors = useThemeColors();
   const padding = variant === "compact" ? "p-4" : "p-5";
 
