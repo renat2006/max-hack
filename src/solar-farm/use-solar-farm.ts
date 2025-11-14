@@ -19,7 +19,7 @@ export const useSolarFarm = (): {
   placePanel: (position: GridPosition, panelType: string) => void;
   upgradePanel: (position: GridPosition) => void;
   collectEnergy: () => void;
-  collectOfflineEnergy: () => void;
+  collectOfflineEnergy: () => Promise<void>;
   offlineEnergyData: { available: number; offlineHours: number; energyPerHour: number } | null;
   showOfflineModal: boolean;
   closeOfflineModal: () => void;
@@ -367,7 +367,7 @@ export const useSolarFarm = (): {
       return createEmptyFarm(normalizedUserId);
     });
 
-    const fetchFarmState = async () => {
+    const fetchFarmState = async (): Promise<void> => {
       try {
         const response = await fetch(
           `/api/max/solar-farm?userId=${encodeURIComponent(normalizedUserId)}`,
