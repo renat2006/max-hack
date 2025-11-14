@@ -1,6 +1,7 @@
 {
   "name": "max-hack",
   "version": "0.1.0",
+  "description": "Спутник - современное веб-приложение",
   "private": true,
   "scripts": {
     "dev": "next dev",

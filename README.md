@@ -1,6 +1,6 @@
-# Max Hack
+# Спутник
 
-Next.js приложение с настроенным CI/CD pipeline, Docker и автоматическим деплоем на Vercel.
+Современное веб-приложение на Next.js с настроенным CI/CD pipeline, Docker и автоматическим деплоем на Vercel.
 
 ## 🚀 Быстрый старт
 
@@ -44,13 +44,13 @@ docker-compose -f docker-compose.dev.yml up
 ### Сборка Docker образа вручную
 
 ```bash
-docker build -t max-hack:latest .
+docker build -t sputnik:latest .
 ```
 
 ### Запуск Docker контейнера
 
 ```bash
-docker run -p 3000:3000 max-hack:latest
+docker run -p 3000:3000 sputnik:latest
 ```
 
 ### Остановка контейнеров

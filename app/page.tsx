@@ -1,8 +1,8 @@
 export default function Home(): React.ReactElement {
   return (
     <main>
-      <h1>Добро пожаловать в Max Hack</h1>
-      <p>Next.js приложение готово к разработке!</p>
+      <h1>Добро пожаловать в Спутник</h1>
+      <p>Современное веб-приложение готово к использованию!</p>
     </main>
   );
 }

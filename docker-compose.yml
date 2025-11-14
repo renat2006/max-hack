@@ -5,8 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: max-hack:latest
-    container_name: max-hack-app
+    image: sputnik:latest
+    container_name: sputnik-app
     ports:
       - "3000:3000"
     environment:
