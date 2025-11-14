@@ -1,0 +1,41 @@
+name: Deploy Production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: ${{ steps.deploy.outputs.url }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Wait for Docker image
+        run: |
+          echo "Ожидание сборки Docker образа..."
+          sleep 30
+
+      - name: Deploy to Vercel
+        id: deploy
+        run: |
+          echo "🚀 Деплой в production окружение"
+          npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --yes
+          DEPLOY_URL=$(npx vercel inspect --token ${{ secrets.VERCEL_TOKEN }} --prod | grep -o 'https://[^ ]*' | head -1 || echo "https://your-app.vercel.app")
+          echo "url=$DEPLOY_URL" >> $GITHUB_OUTPUT
+          echo "✅ Деплой завершен"
+
+      - name: Deployment status
+        if: always()
+        run: |
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "✅ Production deployment successful"
+          else
+            echo "❌ Production deployment failed"
+            exit 1
+          fi

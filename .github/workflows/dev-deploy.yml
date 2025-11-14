@@ -1,0 +1,27 @@
+name: Deploy Dev
+
+on:
+  push:
+    branches: [dev]
+  workflow_dispatch:
+
+jobs:
+  deploy-dev:
+    name: Deploy to Dev Environment
+    runs-on: ubuntu-latest
+    environment:
+      name: development
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Wait for Docker image
+        run: |
+          echo "Ожидание сборки Docker образа..."
+          sleep 30
+
+      - name: Deploy to Vercel
+        run: |
+          echo "🚀 Деплой в dev окружение"
+          npx vercel --token ${{ secrets.VERCEL_TOKEN }} --yes
+          echo "✅ Деплой завершен"
