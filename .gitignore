@@ -2,32 +2,58 @@
 node_modules/
 /.pnp
 .pnp.js
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
 
 # Testing
 /coverage
+*.lcov
+.nyc_output
+.jest
 
 # Next.js
 /.next/
 /out/
+.next
+out/
 
 # Production
 /build
+/dist
 
 # Misc
 .DS_Store
 *.pem
+*.log
+*.pid
+*.seed
+*.pid.lock
 
 # Debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
 
 # Local env files
 .env*.local
 .env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
 
 # Vercel
 .vercel
+.vercel/*
 
 # TypeScript
 *.tsbuildinfo
@@ -39,3 +65,61 @@ next-env.d.ts
 *.swp
 *.swo
 *~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Cursor IDE
+.cursor/
+.cursorrules
+.cursor/**
+*.cursor-workspace
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Turbo
+.turbo
+
+# ESLint cache
+.eslintcache
+
+# Prettier cache
+.prettiercache
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Storybook
+storybook-static
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variable files
+.env.development
+.env.production
+.env.staging
