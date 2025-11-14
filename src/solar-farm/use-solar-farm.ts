@@ -151,7 +151,7 @@ export const useSolarFarm = (): {
           | SolarFarmScene
           | undefined;
         if (scene) {
-          const attachHandler = () => {
+          const attachHandler = (): void => {
             sceneRef.current = scene;
             scene.setTileClickHandler(handleTileClick);
             setSceneReady(true);
