@@ -28,7 +28,7 @@ type ComposeResponseBody = {
   image?: CaptchaRenderedImagePayload;
 };
 
-export async function POST(request: Request) {
+export async function POST(request: Request): Promise<Response> {
   let payload: ComposeRequestBody;
 
   try {
@@ -41,7 +41,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid JSON payload" }, { status: 400 });
   }
 
-  if (!payload || !payload.challenge) {
+  if (!payload?.challenge) {
     return NextResponse.json({ error: "Missing challenge blueprint" }, { status: 400 });
   }
 

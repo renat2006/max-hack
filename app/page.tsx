@@ -62,7 +62,7 @@ export default function Home(): React.ReactElement {
                   {user && (
                     <>
                       <p>
-                        <strong>Пользователь:</strong> {user.first_name} {user.last_name ?? ""}
+                        <strong>Пользователь:</strong> {user.first_name ?? ""} {user.last_name ?? ""}
                       </p>
                       {user.username && (
                         <p>

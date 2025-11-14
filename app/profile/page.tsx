@@ -4,6 +4,7 @@ import { useMax, useMaxUser } from "@/lib/max";
 import { Card, Button, Loading } from "@/components/ui";
 import { Navigation } from "@/components/layout/Navigation";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function ProfilePage(): React.ReactElement {
   const { isReady, colorScheme, showAlert, showConfirm, showPopup } = useMax();
@@ -69,11 +70,15 @@ export default function ProfilePage(): React.ReactElement {
             <Card>
               <div className="flex items-center space-x-4 mb-6">
                 {user.photo_url ? (
-                  <img
-                    src={user.photo_url}
-                    alt={`${user.first_name} ${user.last_name ?? ""}`}
-                    className="w-20 h-20 rounded-full"
-                  />
+                  <div className="relative w-20 h-20 rounded-full overflow-hidden">
+                    <Image
+                      src={user.photo_url}
+                      alt={`${user.first_name ?? ""} ${user.last_name ?? ""}`}
+                      fill
+                      className="object-cover"
+                      sizes="80px"
+                    />
+                  </div>
                 ) : (
                   <div
                     className="w-20 h-20 rounded-full flex items-center justify-center text-2xl font-bold"
@@ -82,12 +87,12 @@ export default function ProfilePage(): React.ReactElement {
                       color: colorScheme.button_text_color ?? "#ffffff",
                     }}
                   >
-                    {user.first_name[0]?.toUpperCase()}
+                    {user.first_name?.[0]?.toUpperCase() ?? "?"}
                   </div>
                 )}
                 <div>
                   <h2 className="text-2xl font-semibold">
-                    {user.first_name} {user.last_name ?? ""}
+                    {user.first_name ?? ""} {user.last_name ?? ""}
                   </h2>
                   {user.username && (
                     <p className="opacity-70">@{user.username}</p>
