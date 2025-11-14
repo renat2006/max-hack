@@ -12,13 +12,13 @@ function composeChallenge({ base }: { base: CaptchaChallengeDefinition; seed?: s
   return base;
 }
 
-async function renderChallengeBoard({ challenge }: {
+function renderChallengeBoard({ challenge: _challenge }: {
   challenge: CaptchaChallengeDefinition;
   size?: number;
   format?: "png" | "webp";
   backgroundBlur?: number;
 }): Promise<{ buffer: Buffer; contentType: string; width: number; height: number; format: string }> {
-  throw new Error("renderChallengeBoard not implemented");
+  return Promise.reject(new Error("renderChallengeBoard not implemented"));
 }
 
 type RenderRequestOptions = {

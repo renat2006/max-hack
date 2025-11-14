@@ -9,7 +9,23 @@ import { createEmptyFarm, getTileAt, updateTile, calculateOfflineEnergy } from "
 import { SOLAR_FARM_CONFIG, FOUNDATION_COST, PANEL_CATALOG } from "./config";
 import { useMax } from "@/lib/max";
 
-export const useSolarFarm = () => {
+export const useSolarFarm = (): {
+  initGame: (container: HTMLDivElement) => void;
+  farmState: FarmState;
+  selectedPosition: GridPosition | null;
+  selectedTile: ReturnType<typeof getTileAt> | null;
+  clearSelection: () => void;
+  buildFoundation: (position: GridPosition) => void;
+  placePanel: (position: GridPosition, panelType: string) => void;
+  upgradePanel: (position: GridPosition) => void;
+  collectEnergy: () => void;
+  collectOfflineEnergy: () => void;
+  offlineEnergyData: { available: number; offlineHours: number; energyPerHour: number } | null;
+  showOfflineModal: boolean;
+  closeOfflineModal: () => void;
+  sceneReady: boolean;
+  isSyncingEnergy: boolean;
+} => {
   const { user } = useMax();
   const gameRef = useRef<Phaser.Game | null>(null);
   const sceneRef = useRef<SolarFarmScene | null>(null);
