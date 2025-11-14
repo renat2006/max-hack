@@ -61,6 +61,7 @@ npm start
 ## 📝 Workflow разработки
 
 1. Создайте feature ветку от `dev`:
+
    ```bash
    git checkout dev
    git pull origin dev
@@ -68,12 +69,14 @@ npm start
    ```
 
 2. Внесите изменения и закоммитьте:
+
    ```bash
    git add .
    git commit -m "feat: описание изменений"
    ```
 
 3. Запушьте ветку и создайте Pull Request в `dev`:
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -119,6 +122,7 @@ npm start
 3. Настройте секреты в GitHub Settings → Secrets and variables → Actions
 
 Примеры провайдеров:
+
 - **Vercel**: `npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }}`
 - **AWS**: Используйте AWS CLI или Serverless Framework
 - **Docker**: Соберите образ и запушьте в registry
