@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy Production
 
 on:
   push:
@@ -16,25 +16,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
+      - name: Wait for Docker image
+        run: |
+          echo "Ожидание сборки Docker образа..."
+          sleep 30
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build application
-        run: npm run build
-        env:
-          NODE_ENV: production
-
-      - name: Deploy
+      - name: Deploy to Vercel
         id: deploy
         run: |
-          echo "Деплой приложения"
-          echo "url=https://your-app-url.com" >> $GITHUB_OUTPUT
-          # Здесь добавьте команды для деплоя (Vercel, AWS, и т.д.)
-          # Пример для Vercel:
-          # npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }}
+          echo "🚀 Деплой в production окружение"
+          npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --yes
+          DEPLOY_URL=$(npx vercel inspect --token ${{ secrets.VERCEL_TOKEN }} --prod | grep -o 'https://[^ ]*' | head -1 || echo "https://your-app.vercel.app")
+          echo "url=$DEPLOY_URL" >> $GITHUB_OUTPUT
+          echo "✅ Деплой завершен"
+
+      - name: Deployment status
+        if: always()
+        run: |
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "✅ Production deployment successful"
+          else
+            echo "❌ Production deployment failed"
+            exit 1
+          fi

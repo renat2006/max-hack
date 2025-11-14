@@ -5,54 +5,72 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  pr-checks:
-    name: PR Quality Checks
+  branch-naming:
+    name: Check Branch Naming
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci
-
       - name: Check branch naming
         run: |
           BRANCH_NAME="${{ github.head_ref }}"
           if [[ ! "$BRANCH_NAME" =~ ^(main|dev|feature/|bugfix/|hotfix/).*$ ]]; then
-            echo "⚠️ Ветка должна начинаться с: main, dev, feature/, bugfix/, или hotfix/"
+            echo "❌ Ветка должна начинаться с: main, dev, feature/, bugfix/, или hotfix/"
             echo "Текущее имя ветки: $BRANCH_NAME"
+            exit 1
           fi
+          echo "✅ Именование ветки корректно: $BRANCH_NAME"
 
-      - name: Run ESLint
-        run: npm run lint
-
-      - name: Check TypeScript types
-        run: npm run type-check
-
-      - name: Check code formatting
-        run: npm run format:check
-
-      - name: Build application
-        run: npm run build
-        env:
-          NODE_ENV: production
-
-      - name: Comment PR
+  pr-comment:
+    name: PR Status Comment
+    runs-on: ubuntu-latest
+    needs: branch-naming
+    if: always()
+    steps:
+      - name: Comment PR on failure
         if: failure()
         uses: actions/github-script@v7
         with:
           script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
+            const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '❌ Проверки CI не прошли. Пожалуйста, исправьте ошибки перед мерджем.'
-            })
+              issue_number: context.issue.number,
+            });
+
+            const botComment = comments.find(comment => 
+              comment.user.type === 'Bot' && 
+              comment.body.includes('❌ Проверки CI не прошли')
+            );
+
+            if (!botComment) {
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: '❌ Проверка именования ветки не прошла. Пожалуйста, исправьте имя ветки.'
+              });
+            }
+
+      - name: Comment PR on success
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const botComment = comments.find(comment => 
+              comment.user.type === 'Bot' && 
+              comment.body.includes('✅ Именование ветки корректно')
+            );
+
+            if (!botComment) {
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: '✅ Именование ветки корректно. CI проверки запущены...'
+              });
+            }

@@ -3,6 +3,7 @@ name: Deploy Dev
 on:
   push:
     branches: [dev]
+  workflow_dispatch:
 
 jobs:
   deploy-dev:
@@ -14,23 +15,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build application
-        run: npm run build
-        env:
-          NODE_ENV: production
-
-      - name: Deploy to Dev
+      - name: Wait for Docker image
         run: |
-          echo "Деплой в dev окружение"
-          # Здесь добавьте команды для деплоя в dev окружение
-          # Пример для Vercel:
-          # npx vercel --token ${{ secrets.VERCEL_TOKEN }}
+          echo "Ожидание сборки Docker образа..."
+          sleep 30
+
+      - name: Deploy to Vercel
+        run: |
+          echo "🚀 Деплой в dev окружение"
+          npx vercel --token ${{ secrets.VERCEL_TOKEN }} --yes
+          echo "✅ Деплой завершен"

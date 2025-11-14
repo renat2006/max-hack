@@ -21,18 +21,26 @@ npm run lint || {
   exit 1
 }
 
-# Проверка форматирования
-echo "✨ Checking code formatting..."
+# Автоформатирование кода
+echo "✨ Formatting code..."
+npm run format
+
+# Проверка форматирования (после автоформатирования)
+echo "✨ Verifying code formatting..."
 npm run format:check || {
-  echo "❌ Code formatting check failed! Run 'npm run format' to fix."
+  echo "❌ Code formatting verification failed!"
   exit 1
 }
 
 # Проверка билда
 echo "🏗️  Running build check..."
+echo "Очистка предыдущей сборки..."
+rm -rf .next
 npm run build || {
   echo "❌ Build check failed!"
+  echo "Проверьте ошибки сборки выше"
   exit 1
 }
+echo "✅ Build successful!"
 
 echo "✅ All pre-commit checks passed!"
