@@ -27,7 +27,7 @@ export const useSolarFarm = (): {
   isSyncingEnergy: boolean;
 } => {
   const { user } = useMax();
-  const gameRef = useRef<Phaser.Game | null>(null);
+  const gameRef = useRef<Phaser.Game | null>(null) as React.MutableRefObject<Phaser.Game | null>;
   const sceneRef = useRef<SolarFarmScene | null>(null);
   const resizeHandlerRef = useRef<(() => void) | null>(null);
   const syncControllerRef = useRef<AbortController | null>(null);
