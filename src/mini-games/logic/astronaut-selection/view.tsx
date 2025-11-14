@@ -211,7 +211,7 @@ export function AstronautSelectionView({
 
     const validationFeedback = gameState.showFeedback
       ? {
-          type: (gameState.lastDecisionCorrect ? "success" : "error") as "success" | "error",
+          type: (gameState.lastDecisionCorrect ? "success" : "error"),
           timestamp: Date.now(),
         }
       : null;

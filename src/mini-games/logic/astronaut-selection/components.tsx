@@ -32,7 +32,7 @@ const SUCCESS_GRADIENT =
 const DANGER_GRADIENT =
   "linear-gradient(135deg, rgba(255, 122, 154, 0.95) 0%, rgba(214, 72, 118, 0.82) 100%)";
 
-export const CandidateProfileCard = memo(function CandidateProfileCard({
+export const CandidateProfileCard = memo(({
   candidate,
   candidateIndex,
   totalCandidates,
@@ -40,7 +40,7 @@ export const CandidateProfileCard = memo(function CandidateProfileCard({
   showHint,
   showFeedback,
   lastDecisionCorrect,
-}: CandidateProfileCardProps) {
+}: CandidateProfileCardProps) => {
   const colors = useThemeColors();
 
   const avatarUrl = useMemo(() => generateAvatarUrl(candidate), [candidate]);

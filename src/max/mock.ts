@@ -214,7 +214,7 @@ export const createMockWebApp = (): TelegramWebApp => {
       if (!handlers[event]) {
         handlers[event] = new Set();
       }
-      handlers[event]!.add(handler);
+      handlers[event].add(handler);
     },
     offEvent(event: string, handler: EventHandler) {
       handlers[event]?.delete(handler);

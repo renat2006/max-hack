@@ -8,7 +8,7 @@ interface SlideFrameProps extends OnboardingSlideProps {
   children: ReactNode;
 }
 
-export function SlideFrame({ isActive, direction, children }: SlideFrameProps) {
+export function SlideFrame({ isActive, direction, children }: SlideFrameProps): React.ReactElement {
   return (
     <div
       className="flex h-full w-full flex-col justify-center px-4 py-2 sm:px-6 overflow-y-auto"

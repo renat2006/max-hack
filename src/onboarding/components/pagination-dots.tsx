@@ -8,7 +8,7 @@ interface PaginationDotsProps {
   onDotClick?: (index: number) => void;
 }
 
-export function PaginationDots({ total, current, onDotClick }: PaginationDotsProps) {
+export function PaginationDots({ total, current, onDotClick }: PaginationDotsProps): React.ReactElement {
   const colors = useThemeColors();
 
   return (

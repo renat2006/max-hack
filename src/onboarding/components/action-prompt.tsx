@@ -9,9 +9,9 @@ interface ActionPromptProps {
   accentColor?: string;
 }
 
-export function ActionPrompt({ icon, text, accentColor }: ActionPromptProps) {
+export function ActionPrompt({ icon, text, accentColor }: ActionPromptProps): React.ReactElement {
   const colors = useThemeColors();
-  const accent = accentColor || colors.accent;
+  const accent = accentColor ?? colors.accent;
 
   return (
     <div

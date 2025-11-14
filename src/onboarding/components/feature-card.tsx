@@ -17,9 +17,9 @@ export function FeatureCard({
   description,
   accentColor,
   isCompact = false,
-}: FeatureCardProps) {
+}: FeatureCardProps): React.ReactElement {
   const colors = useThemeColors();
-  const accent = accentColor || colors.accent;
+  const accent = accentColor ?? colors.accent;
 
   return (
     <div
