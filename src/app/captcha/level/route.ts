@@ -8,7 +8,7 @@ import type {
 // import { composeChallenge } from "@/server/captcha/generator";
 // import { renderChallengeBoard } from "@/server/captcha/renderer";
 
-function composeChallenge({ base }: { base: CaptchaChallengeDefinition; seed?: string }): CaptchaChallengeDefinition {
+function composeChallenge({ base, seed: _seed }: { base: CaptchaChallengeDefinition; seed?: string }): CaptchaChallengeDefinition {
   return base;
 }
 
