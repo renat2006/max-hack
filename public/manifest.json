@@ -1,0 +1,9 @@
+{
+  "name": "Satellite AI",
+  "short_name": "Satellite AI",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0ea5e9",
+  "icons": []
+}
