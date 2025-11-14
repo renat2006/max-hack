@@ -199,9 +199,11 @@ docker run -p 3000:3000 ghcr.io/<owner>/<repo>:latest
 
 3. **Настройка Vercel проекта:**
    - Подключите репозиторий к Vercel
-   - Vercel автоматически обнаружит Next.js проект и использует стандартную сборку
-   - Для использования Docker на Vercel: Settings → General → Build & Development Settings → Enable "Use Docker"
-   - Docker образы в GHCR доступны для других платформ (Kubernetes, AWS ECS и т.д.)
+   - В настройках проекта Vercel: Settings → General → Build & Development Settings
+   - Включите опцию **"Use Docker"** или выберите **"Dockerfile"** в качестве метода сборки
+   - Vercel будет использовать Dockerfile для сборки (Vercel соберет образ сам, не из GHCR)
+   - **Важно**: Vercel не может использовать готовые образы из GHCR, он всегда собирает из Dockerfile
+   - Docker образы в GHCR доступны для других платформ (Kubernetes, AWS ECS, локальный запуск и т.д.)
 
 ### Настройка GitHub Container Registry
 
