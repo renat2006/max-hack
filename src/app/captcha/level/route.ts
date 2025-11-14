@@ -4,8 +4,22 @@ import type {
   CaptchaChallengeDefinition,
   CaptchaRenderedImagePayload,
 } from "@/lib/mini-games/modes/captcha/types";
-import { composeChallenge } from "@/server/captcha/generator";
-import { renderChallengeBoard } from "@/server/captcha/renderer";
+// TODO: Implement composeChallenge and renderChallengeBoard
+// import { composeChallenge } from "@/server/captcha/generator";
+// import { renderChallengeBoard } from "@/server/captcha/renderer";
+
+function composeChallenge({ base }: { base: CaptchaChallengeDefinition; seed?: string }): CaptchaChallengeDefinition {
+  return base;
+}
+
+async function renderChallengeBoard({ challenge }: {
+  challenge: CaptchaChallengeDefinition;
+  size?: number;
+  format?: "png" | "webp";
+  backgroundBlur?: number;
+}): Promise<{ buffer: Buffer; contentType: string; width: number; height: number; format: string }> {
+  throw new Error("renderChallengeBoard not implemented");
+}
 
 type RenderRequestOptions = {
   includeImage?: boolean;

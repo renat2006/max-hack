@@ -1,4 +1,4 @@
-import { designCssVars } from "@/lib/design-system/theme";
+import { designCssVars } from "@/src/design-system/theme";
 
 type ThemeColors = {
   canvas: string;

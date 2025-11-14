@@ -28,8 +28,13 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@/lib/*": ["./src/*"],
-      "@/app/*": ["./src/app/*"]
+      "@/lib/*": ["./lib/*"],
+      "@/app/*": ["./src/app/*"],
+      "@/src/*": ["./src/*"],
+      "@/server/*": ["./src/server/*"],
+      "@/lib/mini-games/*": ["./src/mini-games/*"],
+      "@/lib/db/*": ["./src/db/*"],
+      "@/lib/data/*": ["./src/data/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
