@@ -4,7 +4,7 @@ import { memo, useEffect, useState } from "react";
 import { LottieAnimation } from "@/lib/lottie/lottie-animation";
 import { QUALITY_RENDERER_SETTINGS } from "@/lib/lottie/presets";
 import type { LottieAnimationData } from "@/lib/lottie/types";
-import { useThemeColors } from "@/src/max/use-theme-colors";
+import { useThemeColors } from "@/lib/max/use-theme-colors";
 
 type PreloaderProps = {
   message?: string;

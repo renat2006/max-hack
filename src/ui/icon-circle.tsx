@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 
-import { useThemeColors } from "@/src/max/use-theme-colors";
+import { useThemeColors } from "@/lib/max/use-theme-colors";
 
 type IconCircleSize = "sm" | "md" | "lg";
 type IconCircleVariant = "outlined" | "filled" | "glow";

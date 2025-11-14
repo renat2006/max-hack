@@ -1,6 +1,6 @@
 "use client";
 
-import { useThemeColors } from "@/src/max/use-theme-colors";
+import { useThemeColors } from "@/lib/max/use-theme-colors";
 
 interface PaginationDotsProps {
   total: number;

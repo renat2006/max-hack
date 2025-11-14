@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSqlClient } from "@/lib/db/postgres";
-import { sendNotification } from "@/src/max/notification-service";
+import { sendNotification } from "@/lib/max/notification-service";
 import { logger } from "@/lib/utils/logger";
 
 export const runtime = "nodejs";

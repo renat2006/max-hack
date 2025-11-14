@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getProgressSummary, saveProgressEvent } from "@/lib/data/progress-repository";
 import { getSolarFarmState, upsertSolarFarmState } from "@/lib/data/solar-farm-repository";
 import { logger } from "@/lib/utils/logger";
-import { sendNotification } from "@/src/max/notification-service";
+import { sendNotification } from "@/lib/max/notification-service";
 import { createEmptyFarm } from "@/lib/solar-farm/engine";
 import { touchUserActivity } from "@/lib/data/user-repository";
 

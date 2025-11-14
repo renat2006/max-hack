@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
-import { useThemeColors } from "@/src/max/use-theme-colors";
+import { useThemeColors } from "@/lib/max/use-theme-colors";
 
 type CardVariant = "default" | "compact" | "accent";
 

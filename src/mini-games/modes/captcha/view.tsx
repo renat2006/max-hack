@@ -12,8 +12,8 @@ import type {
   MiniGameMetricTone,
 } from "@/lib/mini-games/types";
 import { triggerHapticFeedback } from "@/lib/mini-games/core";
-import { useMax } from "@/src/max/max-context"";
-import { useThemeColors } from "@/src/max/use-theme-colors";
+import { useMax } from "@/lib/max";
+import { useThemeColors } from "@/lib/max/use-theme-colors";
 
 import type { CaptchaChallengeDefinition } from "./types";
 import { CaptchaModeSelector, useCaptchaGameMode } from "./captcha-mode-selector";
@@ -90,13 +90,13 @@ export function CaptchaMissionView({
     const cachePercent = Math.round(prefetchProgress * 100);
     const metrics: MiniGameHudMetric[] = [
       {
-        label: "Score",
+        label: "Очки",
         value: totalScore.toString(),
         icon: "score",
         tone: "neutral",
       },
       {
-        label: "Streak",
+        label: "Серия",
         value: `${streak}`,
         icon: "streak",
         tone: streakTone,
@@ -105,7 +105,7 @@ export function CaptchaMissionView({
 
     if (!isInitialLoadComplete || cachePercent < 100) {
       metrics.push({
-        label: "Cache",
+        label: "Кэш",
         value: `${cachePercent}%`,
         icon: "speed",
         tone: cachePercent >= 80 ? "success" : cachePercent <= 40 ? "warning" : "neutral",
@@ -133,32 +133,34 @@ export function CaptchaMissionView({
 
   const feedbackMessage = useMemo(() => {
     if (timerExpired) {
-      return "Mission timer expired. Review your final telemetry summary.";
+      return "Время миссии истекло. Просмотрите итоговую сводку телеметрии.";
     }
 
     if (status === "success") {
-      return "Telemetry confirmed. Excellent work!";
+      return "Телеметрия подтверждена. Отличная работа!";
     }
 
     if (status === "error" && validation?.status === "error") {
       const issues: string[] = [];
 
       if (validation.missing > 0) {
-        issues.push(`${validation.missing} required tile${validation.missing > 1 ? "s" : ""}`);
+        const count = validation.missing;
+        issues.push(`${count} ${count === 1 ? "обязательная плитка" : count < 5 ? "обязательные плитки" : "обязательных плиток"}`);
       }
 
       if (validation.extra > 0) {
-        issues.push(`${validation.extra} incorrect tile${validation.extra > 1 ? "s" : ""}`);
+        const count = validation.extra;
+        issues.push(`${count} ${count === 1 ? "неправильная плитка" : count < 5 ? "неправильные плитки" : "неправильных плиток"}`);
       }
 
       if (issues.length === 0) {
-        return "Selection was empty. Tag at least one tile.";
+        return "Выбор пуст. Отметьте хотя бы одну плитку.";
       }
 
-      return `Adjust your selection: ${issues.join(" and ")}.`;
+      return `Исправьте выбор: ${issues.join(" и ")}.`;
     }
 
-    return "Review the telemetry feed and validate the signal.";
+    return "Просмотрите поток телеметрии и подтвердите сигнал.";
   }, [status, validation, timerExpired]);
 
   const handleToggleCell = useCallback(
@@ -224,7 +226,7 @@ export function CaptchaMissionView({
           variant="secondary"
           icon={<Sparkle size={20} weight="fill" />}
         >
-          View Results
+          Просмотреть результаты
         </MiniGameButton>
       );
     }
@@ -248,14 +250,14 @@ export function CaptchaMissionView({
                 transition: "transform 16ms linear",
               }}
             />
-            <span className="relative z-10">{canAdvance ? "Continue" : "Finish"}</span>
+            <span className="relative z-10">{canAdvance ? "Продолжить" : "Завершить"}</span>
           </button>
           <MiniGameButton
             onClick={handleRetry}
             variant="secondary"
             icon={<ArrowClockwise size={20} weight="bold" />}
           >
-            Retry
+            Повторить
           </MiniGameButton>
         </div>
       );
@@ -269,7 +271,7 @@ export function CaptchaMissionView({
           fullWidth
           icon={<ArrowClockwise size={20} weight="bold" />}
         >
-          Try Again
+          Попробовать снова
         </MiniGameButton>
       );
     }
@@ -281,7 +283,7 @@ export function CaptchaMissionView({
         fullWidth
         icon={<Sparkle size={20} weight={isSubmitDisabled || !isLoaded ? "regular" : "fill"} />}
       >
-        Validate
+        Подтвердить
       </MiniGameButton>
     );
   }, [
@@ -310,7 +312,7 @@ export function CaptchaMissionView({
         <div className="flex h-full items-center justify-center">
           <div className="text-center" style={{ color: colors.textMuted }}>
             <div className="mb-4 text-4xl">🎮</div>
-            <p className="text-sm">Choose game mode to continue</p>
+            <p className="text-sm">Выберите режим игры для продолжения</p>
           </div>
         </div>
       </>
@@ -328,7 +330,7 @@ export function CaptchaMissionView({
           onSelect={handleSelectMode}
           currentMode={selectedMode}
         />
-        <Preloader message="Loading mission..." showProgress progress={loadProgress} visible />
+        <Preloader message="Загрузка миссии..." showProgress progress={loadProgress} visible />
       </>
     );
   }
@@ -383,7 +385,7 @@ export function CaptchaMissionView({
                     background: `${colors.accent}15`,
                     color: colors.accent,
                   }}
-                  title="Change mode"
+                  title="Изменить режим"
                 >
                   <Swap size={13} weight="bold" className="sm:hidden" />
                   <Swap size={16} weight="bold" className="hidden sm:block" />

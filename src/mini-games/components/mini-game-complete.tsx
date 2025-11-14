@@ -1,7 +1,7 @@
 "use client";
 
 import { Trophy, Target, ArrowClockwise, House, Sparkle } from "@phosphor-icons/react/dist/ssr";
-import { useThemeColors } from "@/src/max/use-theme-colors";
+import { useThemeColors } from "@/lib/max/use-theme-colors";
 
 interface MiniGameCompleteProps {
   show: boolean;

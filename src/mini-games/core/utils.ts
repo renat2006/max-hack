@@ -1,45 +1,14 @@
-// Core Mini-Game Utilities
-// Общие утилиты для всех мини-игр
-
 import type { MiniGameVibration } from "./engine";
+import { triggerMaxHapticFeedback } from "@/lib/max";
 
-type TelegramHapticFeedback = {
-  impactOccurred?: (type: "light" | "medium" | "heavy" | "rigid" | "soft") => void;
-  notificationOccurred?: (type: "success" | "error" | "warning") => void;
-  selectionChanged?: () => void;
-};
-
-type TelegramWebAppLike = {
-  HapticFeedback?: TelegramHapticFeedback;
-};
-
-// Вибрация через Telegram WebApp
 export function triggerHapticFeedback(
-  webApp: TelegramWebAppLike | undefined,
+  webApp: typeof window.Max | null | undefined,
   type: MiniGameVibration,
 ): void {
-  if (!webApp?.HapticFeedback) return;
-
-  switch (type) {
-    case "light":
-      webApp.HapticFeedback.impactOccurred?.("light");
-      break;
-    case "medium":
-      webApp.HapticFeedback.impactOccurred?.("medium");
-      break;
-    case "heavy":
-      webApp.HapticFeedback.impactOccurred?.("heavy");
-      break;
-    case "success":
-      webApp.HapticFeedback.notificationOccurred?.("success");
-      break;
-    case "error":
-      webApp.HapticFeedback.notificationOccurred?.("error");
-      break;
-    case "warning":
-      webApp.HapticFeedback.notificationOccurred?.("warning");
-      break;
+  if (!webApp) {
+    return;
   }
+  triggerMaxHapticFeedback(webApp, type);
 }
 
 // Генерация случайных элементов из массива

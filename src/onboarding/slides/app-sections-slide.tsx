@@ -9,7 +9,7 @@ import {
   User,
 } from "@phosphor-icons/react/dist/ssr";
 
-import { useThemeColors } from "@/src/max/use-theme-colors";
+import { useThemeColors } from "@/lib/max/use-theme-colors";
 
 import { SlideFrame } from "../components/slide-frame";
 import type { OnboardingSlideProps } from "../types";

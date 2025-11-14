@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { GridFour, Images, Sparkle } from "@phosphor-icons/react/dist/ssr";
 
-import { useThemeColors } from "@/src/max/use-theme-colors";
-import { useMax } from "@/src/max/max-context"";
+import { useThemeColors } from "@/lib/max/use-theme-colors";
+import { useMax } from "@/lib/max";
 import { triggerHapticFeedback } from "@/lib/mini-games/core";
 
 import type { CaptchaGameMode } from "./types";

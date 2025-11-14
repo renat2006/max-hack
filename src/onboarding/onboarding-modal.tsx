@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 
 import { ArrowLeft, ArrowRight, X } from "@phosphor-icons/react/dist/ssr";
 
-import { useThemeColors } from "@/src/max/use-theme-colors";
+import { useThemeColors } from "@/lib/max/use-theme-colors";
 
 import { OnboardingProvider } from "./onboarding-context";
 import { PaginationDots } from "./components/pagination-dots";

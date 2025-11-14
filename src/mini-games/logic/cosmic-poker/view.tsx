@@ -4,8 +4,8 @@ import { useCallback, useEffect, useState, useRef, useMemo } from "react";
 import { Lightning, Eye, Info, CheckCircle } from "@phosphor-icons/react/dist/ssr";
 import { animated, useSpring } from "@react-spring/web";
 
-import { useThemeColors } from "@/src/max/use-theme-colors";
-import { useMax } from "@/src/max/max-context"";
+import { useThemeColors } from "@/lib/max/use-theme-colors";
+import { useMax } from "@/lib/max";
 import { triggerHapticFeedback } from "@/lib/mini-games/core";
 import { GameRulesModal, useGameRules } from "@/lib/mini-games/components";
 import { COSMIC_POKER_RULES } from "@/lib/mini-games/game-rules-configs";

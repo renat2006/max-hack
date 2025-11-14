@@ -69,7 +69,7 @@ export const submitProgressEvent = (params: SubmitProgressEventParams): void => 
     return;
   }
 
-  fetch("/api/telegram/progress", {
+  fetch("/api/max/progress", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

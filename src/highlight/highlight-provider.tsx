@@ -3,7 +3,7 @@
 import { H } from "@highlight-run/next/client";
 import { useEffect, useRef, type ReactNode } from "react";
 
-import { useMax } from "@/src/max/max-context"";
+import { useMax } from "@/lib/max";
 import { logger } from "@/lib/utils/logger";
 
 import { isHighlightEnabled } from "./config";

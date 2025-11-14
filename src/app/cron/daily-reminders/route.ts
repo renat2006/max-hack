@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { sendBatchNotifications } from "@/src/max/notification-service";
+import { sendBatchNotifications } from "@/lib/max/notification-service";
 import { getSqlClient } from "@/lib/db/postgres";
 import { logger } from "@/lib/utils/logger";
 

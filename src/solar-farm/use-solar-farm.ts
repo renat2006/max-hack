@@ -7,7 +7,7 @@ import { LoadingScene } from "./phaser/LoadingScene";
 import type { FarmState, GridPosition } from "./types";
 import { createEmptyFarm, getTileAt, updateTile, calculateOfflineEnergy } from "./engine";
 import { SOLAR_FARM_CONFIG, FOUNDATION_COST, PANEL_CATALOG } from "./config";
-import { useMax } from "@/src/max/max-context"";
+import { useMax } from "@/lib/max";
 
 export const useSolarFarm = () => {
   const { user } = useMax();
@@ -40,7 +40,7 @@ export const useSolarFarm = () => {
     }
 
     try {
-      const response = await fetch("/api/telegram/solar-farm", {
+      const response = await fetch("/api/max/solar-farm", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -354,7 +354,7 @@ export const useSolarFarm = () => {
     const fetchFarmState = async () => {
       try {
         const response = await fetch(
-          `/api/telegram/solar-farm?userId=${encodeURIComponent(normalizedUserId)}`,
+          `/api/max/solar-farm?userId=${encodeURIComponent(normalizedUserId)}`,
           { signal: controller.signal, cache: "no-store" },
         );
 

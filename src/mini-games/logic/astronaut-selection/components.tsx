@@ -5,7 +5,7 @@ import { CheckCircle, XCircle } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 
 import { Card } from "@/lib/ui/card";
-import { useThemeColors } from "@/src/max/use-theme-colors";
+import { useThemeColors } from "@/lib/max/use-theme-colors";
 import type { PersonTraits } from "./types";
 import { generateAvatarUrl } from "./avatar-generator";
 
@@ -48,56 +48,55 @@ export const CandidateProfileCard = memo(function CandidateProfileCard({
   // Выбираем только 4 ключевых атрибута (БЕЗ цвета волос - видно на аватаре)
   const keyAttributes = useMemo<CandidateAttribute[]>(() => {
     const allAttributes: CandidateAttribute[] = [
-      { key: "age", label: "Age", icon: "⏱", value: `${candidate.age}`, priority: 10 },
+      { key: "age", label: "Возраст", icon: "⏱", value: `${candidate.age}`, priority: 10 },
       {
         key: "profession",
-        label: "Role",
+        label: "Роль",
         icon: "◆",
         value: formatToken(candidate.profession),
         priority: 9,
       },
       {
         key: "education",
-        label: "Education",
+        label: "Образование",
         icon: "■",
         value: formatToken(candidate.education),
         priority: 8,
       },
       {
         key: "experience",
-        label: "Experience",
+        label: "Опыт",
         icon: "★",
-        value: `${candidate.experience} years`,
+        value: `${candidate.experience} лет`,
         priority: 7,
       },
       {
         key: "citizenship",
-        label: "Origin",
+        label: "Происхождение",
         icon: "●",
         value: formatCountry(candidate.citizenship),
         priority: 6,
       },
       {
         key: "languages",
-        label: "Languages",
+        label: "Языки",
         icon: "▲",
-        value: `${candidate.languages} lang`,
+        value: `${candidate.languages} языков`,
         priority: 5,
       },
-      { key: "height", label: "Height", icon: "↕", value: `${candidate.height} cm`, priority: 4 },
-      // hairColor убран - видно на аватаре!
+      { key: "height", label: "Рост", icon: "↕", value: `${candidate.height} см`, priority: 4 },
       {
         key: "hasGlasses",
-        label: "Glasses",
+        label: "Очки",
         icon: "○",
-        value: candidate.hasGlasses ? "Yes" : "No",
+        value: candidate.hasGlasses ? "Да" : "Нет",
         priority: 2,
       },
       {
         key: "hasTattoos",
-        label: "Tattoos",
+        label: "Татуировки",
         icon: "◈",
-        value: candidate.hasTattoos ? "Yes" : "No",
+        value: candidate.hasTattoos ? "Да" : "Нет",
         priority: 1,
       },
       // gender убран - определяется только по аватару!
@@ -126,8 +125,8 @@ export const CandidateProfileCard = memo(function CandidateProfileCard({
       >
         <span className="text-[11px] font-semibold" style={{ color: colors.textMuted }}>
           {totalCandidates === -1
-            ? `Candidate #${candidateIndex + 1}` // Бесконечный режим
-            : `Candidate ${candidateIndex + 1} / ${totalCandidates}`}
+            ? `Кандидат #${candidateIndex + 1}`
+            : `Кандидат ${candidateIndex + 1} / ${totalCandidates}`}
         </span>
         {/* Индикатор всегда занимает место, но видим только при feedback */}
         <div
@@ -309,7 +308,7 @@ export function DecisionBar({ onApprove, onReject, disabled = false }: DecisionB
             className="hidden min-[390px]:block sm:hidden flex-shrink-0"
           />
           <XCircle size={20} weight="fill" className="hidden sm:block flex-shrink-0" />
-          Reject
+          Отклонить
         </span>
         <span
           aria-hidden
@@ -341,7 +340,7 @@ export function DecisionBar({ onApprove, onReject, disabled = false }: DecisionB
             className="hidden min-[390px]:block sm:hidden flex-shrink-0"
           />
           <CheckCircle size={20} weight="fill" className="hidden sm:block flex-shrink-0" />
-          Approve
+          Одобрить
         </span>
         <span
           aria-hidden
@@ -365,12 +364,12 @@ function formatToken(token: string) {
 
 function formatCountry(code: PersonTraits["citizenship"]) {
   const map: Record<PersonTraits["citizenship"], string> = {
-    usa: "USA",
-    russia: "Russia",
-    china: "China",
-    europe: "ESA",
-    india: "India",
-    japan: "Japan",
+    usa: "США",
+    russia: "Россия",
+    china: "Китай",
+    europe: "ЕКА",
+    india: "Индия",
+    japan: "Япония",
   };
 
   return map[code] ?? formatToken(code);

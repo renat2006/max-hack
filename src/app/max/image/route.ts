@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { generateNotificationSVG } from "@/src/max/image-generator";
+import { generateNotificationSVG } from "@/lib/max/image-generator";
 import sharp from "sharp";
 
 export const runtime = "nodejs"; // Изменено с edge на nodejs для sharp

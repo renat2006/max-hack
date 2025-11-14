@@ -214,8 +214,8 @@ export class SolarFarmScene extends Phaser.Scene {
         return;
       }
 
-      if (window.Telegram?.WebApp?.HapticFeedback) {
-        window.Telegram.WebApp.HapticFeedback.impactOccurred("light");
+      if (window.Max?.HapticFeedback) {
+        window.Max.HapticFeedback.impactOccurred("light");
       }
 
       this.selectTile(position);

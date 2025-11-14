@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useCallback, useEffect, useMemo, useRef } from "react";
-import { useThemeColors } from "@/src/max/use-theme-colors";
-import { useMax } from "@/src/max/max-context"";
+import { useThemeColors } from "@/lib/max/use-theme-colors";
+import { useMax, useMaxBackButton } from "@/lib/max";
 import { triggerHapticFeedback } from "@/lib/mini-games/core";
 import { getMiniGameById } from "@/lib/mini-games/catalog";
 import { submitProgressEvent } from "@/lib/mini-games/utils/progress";
@@ -44,6 +44,7 @@ export function AstronautSelectionView({
 }: AstronautSelectionViewProps) {
   const colors = useThemeColors();
   const { webApp, user, isMock } = useMax();
+  const backButton = useMaxBackButton();
   const gameDefinition = useMemo(() => getMiniGameById("decision-tree-builder"), []);
   const userId = user?.id;
   const username = user?.username ?? null;
@@ -144,27 +145,25 @@ export function AstronautSelectionView({
     return () => clearInterval(timer);
   }, [gameState.gameOver, gameState.timeLeft, showRulesModal]);
 
-  // Telegram WebApp интеграция - BackButton
   useEffect(() => {
     if (!webApp) return;
 
-    // Показываем BackButton
-    webApp.BackButton.show();
+    backButton.show();
 
-    const handleBack = () => {
+    const handleBack = (): void => {
       triggerHapticFeedback(webApp, "light");
       if (onExit) {
         onExit();
       }
     };
 
-    webApp.BackButton.onClick(handleBack);
+    backButton.onClick(handleBack);
 
     return () => {
-      webApp.BackButton.offClick(handleBack);
-      webApp.BackButton.hide();
+      backButton.offClick(handleBack);
+      backButton.hide();
     };
-  }, [webApp, onExit]);
+  }, [webApp, onExit, backButton]);
 
   // Таймер подсказки (7 секунд)
   useEffect(() => {
@@ -224,13 +223,13 @@ export function AstronautSelectionView({
       },
       metrics: [
         {
-          label: "Correct",
+          label: "Правильно",
           value: `${gameState.correctDecisions}/${gameState.totalDecisions}`,
           icon: "score",
           tone: "success",
         },
         {
-          label: "Accuracy",
+          label: "Точность",
           value: `${accuracyPercent}%`,
           icon: "accuracy",
           tone: accuracyTone,
@@ -429,7 +428,7 @@ export function AstronautSelectionView({
     return (
       <div className="flex h-full items-center justify-center p-6">
         <p className="text-sm" style={{ color: colors.textSecondary }}>
-          Loading candidates...
+          Загрузка кандидатов...
         </p>
       </div>
     );

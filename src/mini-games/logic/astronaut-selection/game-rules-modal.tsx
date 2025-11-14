@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { X, CheckCircle, Lightning, Eye, Target } from "@phosphor-icons/react/dist/ssr";
-import { useThemeColors } from "@/src/max/use-theme-colors";
-import { useMax } from "@/src/max/max-context"";
+import { useThemeColors } from "@/lib/max/use-theme-colors";
+import { useMax } from "@/lib/max";
 import { triggerHapticFeedback } from "@/lib/mini-games/core";
 
 interface GameRulesModalProps {

@@ -1,7 +1,7 @@
 "use client";
 
-import { useMaxBridge, useMaxUser, useMaxTheme } from "@/src/max";
-import type { MaxUser, MaxColorScheme, MaxTheme } from "@/src/max/types";
+import { useMaxBridge, useMaxUser, useMaxTheme } from "@/lib/max";
+import type { MaxUser, MaxColorScheme, MaxTheme } from "@/lib/max/types";
 import { useMemo, type ReactNode } from "react";
 import { createContext, useContext } from "react";
 
