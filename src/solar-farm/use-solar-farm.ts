@@ -27,7 +27,7 @@ export const useSolarFarm = (): {
   isSyncingEnergy: boolean;
 } => {
   const { user } = useMax();
-  const gameRef = useRef<Phaser.Game | null>(null) as React.MutableRefObject<Phaser.Game | null>;
+  const gameRef = useRef<Phaser.Game | null>(null);
   const sceneRef = useRef<SolarFarmScene | null>(null);
   const resizeHandlerRef = useRef<(() => void) | null>(null);
   const syncControllerRef = useRef<AbortController | null>(null);
@@ -75,7 +75,7 @@ export const useSolarFarm = (): {
     }
   }, []);
 
-  const handleTileClick = useCallback((position: GridPosition) => {
+  const handleTileClick = useCallback((position: GridPosition): void => {
     setSelectedPosition(position);
     // Pause game when modal opens
     sceneRef.current?.setPaused(true);
@@ -136,7 +136,7 @@ export const useSolarFarm = (): {
 
       gameRef.current = new Phaser.Game(config);
 
-      const handleResize = () => {
+      const handleResize = (): void => {
         if (!gameRef.current) return;
         const { clientWidth: width, clientHeight: height } = container;
         gameRef.current.scale.resize(width, height);
