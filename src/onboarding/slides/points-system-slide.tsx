@@ -24,14 +24,14 @@ export function PointsSystemSlide({ isActive, direction }: OnboardingSlideProps)
           >
             <div className="mb-4 text-center">
               <div className="mb-1 text-sm font-medium" style={{ color: colors.textMuted }}>
-                Your Balance
+                Ваш баланс
               </div>
               <div className="flex items-baseline justify-center gap-2">
                 <span className="text-5xl font-bold" style={{ color: colors.textPrimary }}>
                   1,247
                 </span>
                 <span className="text-2xl font-semibold" style={{ color: colors.accent }}>
-                  pts
+                  очков
                 </span>
               </div>
             </div>
@@ -44,7 +44,7 @@ export function PointsSystemSlide({ isActive, direction }: OnboardingSlideProps)
             >
               <TrendUp size={18} weight="bold" style={{ color: colors.success }} />
               <span className="text-sm font-semibold" style={{ color: colors.success }}>
-                +125 today
+                +125 сегодня
               </span>
             </div>
           </div>
@@ -53,20 +53,20 @@ export function PointsSystemSlide({ isActive, direction }: OnboardingSlideProps)
         {/* Content */}
         <div className="space-y-4 text-center">
           <h2 className="text-2xl font-bold sm:text-3xl" style={{ color: colors.textPrimary }}>
-            Everything adds up
+            Всё складывается
           </h2>
           <p
             className="mx-auto max-w-md text-base leading-relaxed"
             style={{ color: colors.textSecondary }}
           >
-            Play games, build your farm, come back daily — all activities contribute to one score.
+            Играйте в игры, стройте ферму, возвращайтесь ежедневно — все активности увеличивают один счёт.
           </p>
 
           <div className="mx-auto grid max-w-md gap-3 pt-2">
             {[
-              { icon: Lightning, label: "Mini-games", desc: "25-50 pts per mission" },
-              { icon: TrendUp, label: "Solar panels", desc: "Passive energy flow" },
-              { icon: Trophy, label: "Daily streak", desc: "Bonus multipliers" },
+              { icon: Lightning, label: "Мини-игры", desc: "25-50 очков за миссию" },
+              { icon: TrendUp, label: "Солнечные панели", desc: "Пассивный поток энергии" },
+              { icon: Trophy, label: "Ежедневная серия", desc: "Бонусные множители" },
             ].map((item) => (
               <div
                 key={item.label}

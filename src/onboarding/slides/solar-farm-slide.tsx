@@ -66,7 +66,7 @@ export function SolarFarmSlide({ isActive, direction }: OnboardingSlideProps) {
                 className="text-xs sm:text-sm font-semibold"
                 style={{ color: colors.textPrimary }}
               >
-                Energy Production
+                Производство энергии
               </span>
             </div>
             <div className="flex items-center gap-0.5 sm:gap-1">
@@ -77,7 +77,7 @@ export function SolarFarmSlide({ isActive, direction }: OnboardingSlideProps) {
                 +42
               </span>
               <span className="text-[10px] sm:text-xs" style={{ color: colors.textMuted }}>
-                pts/h
+                очков/ч
               </span>
             </div>
           </div>
@@ -153,7 +153,7 @@ export function SolarFarmSlide({ isActive, direction }: OnboardingSlideProps) {
               className="text-[11px] sm:text-xs font-medium leading-tight"
               style={{ color: colors.success }}
             >
-              Upgrade panels to boost passive income
+              Улучшайте панели для увеличения пассивного дохода
             </span>
           </div>
         </div>
@@ -164,14 +164,13 @@ export function SolarFarmSlide({ isActive, direction }: OnboardingSlideProps) {
             className="text-xl sm:text-2xl font-bold leading-tight"
             style={{ color: colors.textPrimary }}
           >
-            Build your solar farm
+            Постройте свою солнечную ферму
           </h2>
           <p
             className="mx-auto max-w-md text-sm sm:text-base leading-relaxed"
             style={{ color: colors.textSecondary }}
           >
-            Place panels, upgrade them to higher levels, and earn passive points even when
-            you&apos;re away.
+            Размещайте панели, улучшайте их до более высоких уровней и зарабатывайте пассивные очки даже когда вас нет.
           </p>
         </div>
       </div>

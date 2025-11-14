@@ -57,21 +57,20 @@ export function MiniGamesSlide({ isActive, direction }: OnboardingSlideProps) {
         {/* Content */}
         <div className="space-y-4 text-center">
           <h2 className="text-2xl font-bold sm:text-3xl" style={{ color: colors.textPrimary }}>
-            Quick missions, big rewards
+            Быстрые миссии, большие награды
           </h2>
           <p
             className="mx-auto max-w-md text-base leading-relaxed"
             style={{ color: colors.textSecondary }}
           >
-            Each game is designed to be completed in under 2 minutes. Play whenever you have a
-            moment.
+            Каждая игра рассчитана на прохождение менее чем за 2 минуты. Играйте в любое свободное время.
           </p>
 
           <div className="mx-auto grid max-w-sm gap-3 pt-2">
             {[
-              { icon: Target, text: "Test your reflexes and memory" },
-              { icon: Clock, text: "Complete in 1-2 minutes" },
-              { icon: CheckCircle, text: "Earn 25-50 points per game" },
+              { icon: Target, text: "Проверьте свои рефлексы и память" },
+              { icon: Clock, text: "Проходите за 1-2 минуты" },
+              { icon: CheckCircle, text: "Зарабатывайте 25-50 очков за игру" },
             ].map((item, idx) => (
               <div
                 key={idx}

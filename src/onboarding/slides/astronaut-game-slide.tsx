@@ -39,7 +39,7 @@ export function AstronautGameSlide({ isActive, direction }: OnboardingSlideProps
                 Alex Chen
               </div>
               <div className="text-xs" style={{ color: colors.textMuted }}>
-                Mission Specialist Candidate
+                Кандидат в специалисты миссии
               </div>
             </div>
           </div>
@@ -55,11 +55,11 @@ export function AstronautGameSlide({ isActive, direction }: OnboardingSlideProps
             <div className="mb-3 flex items-center gap-2">
               <Path size={18} weight="bold" style={{ color: colors.accent }} />
               <span className="text-sm font-semibold" style={{ color: colors.accent }}>
-                Decision Point
+                Точка принятия решения
               </span>
             </div>
             <p className="mb-3 text-sm" style={{ color: colors.textPrimary }}>
-              Has 5+ years of flight experience?
+              Имеет 5+ лет опыта полётов?
             </p>
             <div className="grid grid-cols-2 gap-2">
               <button
@@ -70,7 +70,7 @@ export function AstronautGameSlide({ isActive, direction }: OnboardingSlideProps
                   border: `1px solid ${colors.success}`,
                 }}
               >
-                YES
+                ДА
               </button>
               <button
                 className="rounded-xl px-4 py-2 text-sm font-semibold"
@@ -80,7 +80,7 @@ export function AstronautGameSlide({ isActive, direction }: OnboardingSlideProps
                   border: `1px solid ${colors.lineSubtle}`,
                 }}
               >
-                NO
+                НЕТ
               </button>
             </div>
           </div>
@@ -96,7 +96,7 @@ export function AstronautGameSlide({ isActive, direction }: OnboardingSlideProps
               }}
             >
               <CheckCircle size={18} weight="fill" />
-              Approve
+              Одобрить
             </button>
             <button
               className="flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold"
@@ -107,7 +107,7 @@ export function AstronautGameSlide({ isActive, direction }: OnboardingSlideProps
               }}
             >
               <XCircle size={18} weight="fill" />
-              Reject
+              Отклонить
             </button>
           </div>
         </div>
@@ -115,13 +115,13 @@ export function AstronautGameSlide({ isActive, direction }: OnboardingSlideProps
         {/* Content */}
         <div className="space-y-3 text-center">
           <h2 className="text-2xl font-bold sm:text-3xl" style={{ color: colors.textPrimary }}>
-            Make the call
+            Примите решение
           </h2>
           <p
             className="mx-auto max-w-md text-base leading-relaxed"
             style={{ color: colors.textSecondary }}
           >
-            Answer questions about each candidate, then approve or reject them for the mission.
+            Отвечайте на вопросы о каждом кандидате, затем одобряйте или отклоняйте их для миссии.
           </p>
         </div>
       </div>
