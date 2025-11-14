@@ -5,6 +5,7 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   optimizeFonts: true,
+  output: "standalone",
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60,
