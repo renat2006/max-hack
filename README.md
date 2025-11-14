@@ -197,12 +197,27 @@ docker run -p 3000:3000 ghcr.io/<owner>/<repo>:latest
    - Name: `VERCEL_TOKEN`
    - Value: ваш токен
 
-3. **Настройка Vercel проекта:**
-   - Подключите репозиторий к Vercel
-   - В настройках проекта Vercel: Settings → General → Build & Development Settings
-   - Включите опцию **"Use Docker"** или выберите **"Dockerfile"** в качестве метода сборки
-   - Vercel будет использовать Dockerfile для сборки (Vercel соберет образ сам, не из GHCR)
-   - **Важно**: Vercel не может использовать готовые образы из GHCR, он всегда собирает из Dockerfile
+3. **Настройка Vercel проекта для Docker:**
+
+   **Шаг 1:** Подключите репозиторий к Vercel (если еще не подключен)
+
+   **Шаг 2:** Включите Docker в настройках проекта:
+   - Зайдите в ваш проект на Vercel
+   - Перейдите в **Settings** → **General**
+   - Найдите раздел **"Build & Development Settings"**
+   - В поле **"Framework Preset"** измените с **"Next.js"** на **"Other"**
+   - После изменения Framework Preset на "Other":
+     - В поле **"Build Command"** оставьте пустым или удалите значение
+     - В поле **"Output Directory"** оставьте пустым или удалите значение
+     - В поле **"Install Command"** оставьте пустым или удалите значение
+   - Vercel автоматически обнаружит `Dockerfile` в корне проекта и будет использовать его для сборки
+
+   **Шаг 3:** Сохраните настройки
+
+   **Важно:**
+   - Vercel автоматически обнаружит `Dockerfile` в корне проекта
+   - Vercel будет собирать Docker образ при каждом деплое
+   - Vercel **не может** использовать готовые образы из GHCR, он всегда собирает из Dockerfile
    - Docker образы в GHCR доступны для других платформ (Kubernetes, AWS ECS, локальный запуск и т.д.)
 
 ### Настройка GitHub Container Registry
