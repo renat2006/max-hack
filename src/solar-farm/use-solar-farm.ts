@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @typescript-eslint/no-redundant-type-constituents */
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import * as Phaser from "phaser";
